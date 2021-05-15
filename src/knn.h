@@ -11,4 +11,8 @@ public:
 
     Vector predict(Matrix X);
 private:
+    int _knn(Vector x);
+    unsigned int _k;
+    Matrix _X;
+    Matrix _y;
 };

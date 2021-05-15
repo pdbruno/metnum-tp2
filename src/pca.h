@@ -9,4 +9,9 @@ public:
 
     Eigen::MatrixXd transform(Matrix X);
 private:
+    unsigned int _alpha;
+
+    Matrix covarianza;
+
+    pair<Vector, Matrix> _first_alpha_pairs;
 };
