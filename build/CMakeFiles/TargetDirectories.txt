@@ -1,0 +1,14 @@
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/CMakeFiles/install/local.dir
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/CMakeFiles/install.dir
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/CMakeFiles/list_install_components.dir
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/CMakeFiles/rebuild_cache.dir
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/CMakeFiles/edit_cache.dir
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/CMakeFiles/install/strip.dir
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/CMakeFiles/tp2.dir
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/CMakeFiles/metnum.dir
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/pybind11/CMakeFiles/install.dir
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/pybind11/CMakeFiles/list_install_components.dir
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/pybind11/CMakeFiles/rebuild_cache.dir
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/pybind11/CMakeFiles/edit_cache.dir
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/pybind11/CMakeFiles/install/strip.dir
+/home/msorondo/Desktop/Metodos Numericos/metnum-tp2/build/pybind11/CMakeFiles/install/local.dir

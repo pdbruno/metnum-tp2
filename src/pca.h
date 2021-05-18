@@ -1,6 +1,5 @@
 #pragma once
 #include "types.h"
-
 class PCA {
 public:
     PCA(unsigned int n_components);
@@ -13,5 +12,6 @@ private:
 
     Matrix covarianza;
 
-    pair<Vector, Matrix> _first_alpha_pairs;
+    std::pair<Vector, Matrix> _first_alpha_pairs;
 };
+Vector chorizear(Matrix X)

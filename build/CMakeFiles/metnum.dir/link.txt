@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -Wall -O3 -O3 -DNDEBUG  -shared  -o metnum.cpython-38-x86_64-linux-gnu.so CMakeFiles/metnum.dir/src/metnum.cpp.o CMakeFiles/metnum.dir/src/knn.cpp.o CMakeFiles/metnum.dir/src/pca.cpp.o CMakeFiles/metnum.dir/src/eigen.cpp.o  -flto 

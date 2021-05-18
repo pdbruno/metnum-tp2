@@ -16,3 +16,4 @@ private:
     Matrix _X;
     Matrix _y;
 };
+void sort(std::vector<double>& distancias, std::vector<int>& clases);

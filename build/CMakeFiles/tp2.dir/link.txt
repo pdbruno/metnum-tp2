@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -O3 -O3 -DNDEBUG  -rdynamic CMakeFiles/tp2.dir/src/main.cpp.o CMakeFiles/tp2.dir/src/knn.cpp.o CMakeFiles/tp2.dir/src/pca.cpp.o CMakeFiles/tp2.dir/src/eigen.cpp.o  -o tp2 

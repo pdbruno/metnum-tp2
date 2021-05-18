@@ -2,8 +2,7 @@
 //#include <chrono>
 #include <iostream>
 #include "knn.h"
-
-
+using namespace std;
 
 KNNClassifier::KNNClassifier(unsigned int n_neighbors):_k(n_neighbors)
 {
@@ -26,7 +25,7 @@ int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENT
         distancias.push_back(diferencia.norm());
     }
 
-    sort(distancias, clases);
+    sorteadito(distancias, clases);
 
     distancias.resize(_k);
     clases.resize(_k);
@@ -65,9 +64,10 @@ Vector KNNClassifier::predict(Matrix X)
 }
 
 
-void sort(std::vector<double>& distancias, std::vector<int>& clases)
+void sorteadito(std::vector<double>& distancias, std::vector<int>& clases)
 {
-  int i, keyClases, j;
+  unsigned int i;  
+  int keyClases, j;
   double key;
   for (i = 1; i < distancias.size(); i++)
   {
