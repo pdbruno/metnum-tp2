@@ -21,7 +21,7 @@ int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENT
 
     for(int i = 0; i < _X.rows() ; i++){
         Vector diferencia = _X.row(i) - x;
-        clases.push_back(_y(i));
+        clases.push_back(_y(i, 0));
         distancias.push_back(diferencia.norm());
     }
 
@@ -30,13 +30,14 @@ int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENT
     distancias.resize(_k);
     clases.resize(_k);
 
-    int digitos[10];
+    std::vector<int> digitos(10, 0);
     for (size_t i = 0; i < _k; i++)
     {
         digitos[clases[i]]++;
     }
 
-    int moda = 0;
+    print_vector(digitos);
+    int moda = 0; //todo esto se puede obviar y sacar la moda directamente en el for anterior
     int modaApariciones = digitos[0];
 
     for (size_t i = 0; i < 10; i++)
@@ -46,10 +47,24 @@ int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENT
             moda = i;
         }
     }
-    
+    _clases = clases;
     return moda;
 }
-
+unsigned int KNNClassifier::get_K()
+{
+    return _k;
+}
+std::vector<int> KNNClassifier::get_Clases()
+{
+    return _clases;
+}
+void print_vector(vector<int> &v)
+{
+    for (uint i = 0; i < 10; i++)
+    {
+        printf("%d\n", v[i]);
+    }
+}
 Vector KNNClassifier::predict(Matrix X)
 {
     // Creamos vector columna a devolver
@@ -57,7 +72,7 @@ Vector KNNClassifier::predict(Matrix X)
 
     for (int i = 0; i < X.rows(); ++i)
     {
-        ret(i) = _knn(X.row(i));
+        ret[i] = _knn(X.row(i));
     }
 
     return ret;

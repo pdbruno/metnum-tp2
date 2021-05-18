@@ -14,4 +14,4 @@ private:
 
     std::pair<Vector, Matrix> _first_alpha_pairs;
 };
-Vector chorizear(Matrix X)
+Vector chorizear(Matrix X);

@@ -45,7 +45,7 @@ Vector chorizear(Matrix X){
   Vector chorizo(784);
   for (size_t i = 0; i < 28; i++)
     for (size_t j = 0; j < 28; j++)
-      chorizo[(28*i)+j] = X[i,j];
+      chorizo[(28*i)+j] = X(i, j);
 
   return chorizo;
 }

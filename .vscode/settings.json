@@ -2,6 +2,7 @@
     "files.associations": {
         "*.asm": "asm",
         "dense": "cpp",
+        "vector": "cpp",
         "array": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
@@ -28,7 +29,6 @@
         "set": "cpp",
         "unordered_map": "cpp",
         "unordered_set": "cpp",
-        "vector": "cpp",
         "exception": "cpp",
         "algorithm": "cpp",
         "functional": "cpp",
