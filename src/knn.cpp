@@ -1,6 +1,3 @@
-#include <algorithm>
-//#include <chrono>
-#include <iostream>
 #include "knn.h"
 using namespace std;
 
@@ -20,23 +17,20 @@ int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENT
     std::vector<int> clases(_X.rows());
 
     for(int i = 0; i < _X.rows() ; i++){
-        Vector diferencia = _X.row(i) - x;
-        clases.push_back(_y(i, 0));
-        distancias.push_back(diferencia.norm());
+        Vector diferencia = _X.row(i) - x.transpose();
+        clases[i] = _y(i, 0);
+        distancias[i] = diferencia.norm();
     }
 
     sorteadito(distancias, clases);
 
-    distancias.resize(_k);
-    clases.resize(_k);
-
-    std::vector<int> digitos(10, 0);
+    std::array<int, 10> digitos = {};
     for (size_t i = 0; i < _k; i++)
     {
         digitos[clases[i]]++;
     }
 
-    print_vector(digitos);
+
     int moda = 0; //todo esto se puede obviar y sacar la moda directamente en el for anterior
     int modaApariciones = digitos[0];
 
@@ -46,23 +40,16 @@ int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENT
             modaApariciones = digitos[i];
             moda = i;
         }
-    }
-    _clases = clases;
+    } 
     return moda;
 }
-unsigned int KNNClassifier::get_K()
-{
-    return _k;
-}
-std::vector<int> KNNClassifier::get_Clases()
-{
-    return _clases;
-}
-void print_vector(vector<int> &v)
+
+
+void print_vector(int v[])
 {
     for (uint i = 0; i < 10; i++)
     {
-        printf("%d\n", v[i]);
+        //pybind11::print(v[i], '\n');
     }
 }
 Vector KNNClassifier::predict(Matrix X)
@@ -100,3 +87,27 @@ void sorteadito(std::vector<double>& distancias, std::vector<int>& clases)
     clases[j + 1] = keyClases;
   }
 }
+/* void swap(int *xp, int *yp) 
+{ 
+    int temp = *xp; 
+    *xp = *yp; 
+    *yp = temp; 
+} 
+  
+void selectionSort(std::vector<double>& distancias, std::vector<int>& clases, int n, int k) 
+{ 
+    int i, j, min_idx; 
+  
+    // One by one move boundary of unsorted subarray 
+    for (i = 0; i < n-1; i++) 
+    { 
+        // Find the minimum element in unsorted array 
+        min_idx = i; 
+        for (j = i+1; j < n; j++) 
+        if (arr[j] < arr[min_idx]) 
+            min_idx = j; 
+  
+        // Swap the found minimum element with the first element 
+        swap(&arr[min_idx], &arr[i]); 
+    } 
+} */

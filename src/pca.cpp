@@ -24,7 +24,7 @@ void PCA::fit(Matrix X) {
 
   covarianza = (res.transpose()) * res;
 
-  _first_alpha_pairs = get_first_eigenvalues(covarianza, _alpha);
+  _first_alpha_pairs = get_first_eigenvalues(covarianza, _alpha, 5000, 1e-16);
 }
 
 
