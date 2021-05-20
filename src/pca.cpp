@@ -13,8 +13,6 @@ void PCA::fit(Matrix X) {
   Vector mu = X.rowwise().sum();
   mu = mu / n;
 
-  Vector iesima(X.cols());
-
   Matrix res(X.rows(), X.cols());
 
   double denominador = sqrt(n - 1);
@@ -30,24 +28,10 @@ void PCA::fit(Matrix X) {
 
 MatrixXd PCA::transform(Matrix X) {
   
-  MatrixXd res(X.rows(), _alpha);
+  Eigen::Map<Vector> chorizo(X.data(), X.size(), 1);
 
-  Vector chorizo = chorizear(X);
-
-  Matrix eigenvectors = _first_alpha_pairs.second; // pertenece a R^(alfa x 784) , luego X pertenece a R^(alfa x 784)
+  Matrix eigenvectors = _first_alpha_pairs.second; // pertenece a R^(alfa x 784)
   
-  res = eigenvectors * chorizo;
-
-  return res;
+  return eigenvectors * chorizo;
 }
-
-Vector chorizear(Matrix X){
-  Vector chorizo(784);
-  for (size_t i = 0; i < 28; i++)
-    for (size_t j = 0; j < 28; j++)
-      chorizo[(28*i)+j] = X(i, j);
-
-  return chorizo;
-}
-
 
