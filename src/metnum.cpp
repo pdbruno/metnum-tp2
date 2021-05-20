@@ -16,6 +16,7 @@ PYBIND11_MODULE(metnum, m) {
 
     py::class_<PCA>(m, "PCA")
         .def(py::init<unsigned int>())
+        .def("debugeameEsta", &PCA::debugeameEsta)
         .def("fit", &PCA::fit)
         .def("transform", &PCA::transform);
     m.def(

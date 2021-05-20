@@ -14,24 +14,20 @@ void PCA::fit(Matrix X) {
   mu = mu / n;
 
   Matrix res(X.rows(), X.cols());
-
   double denominador = sqrt(n - 1);
 
-  for (int i = 0; i < n; i++)
-    res.row(i) = (X.row(i) - mu) / denominador;
+  res = (X.rowwise() - mu.transpose()) / denominador;
 
-  covarianza = (res.transpose()) * res;
+  covarianza = res.transpose() * res;
 
-  _first_alpha_pairs = get_first_eigenvalues(covarianza, _alpha, 5000, 1e-16);
+  tie(_autovalores, _autovectores) = get_first_eigenvalues(covarianza, _alpha, 5000, 1e-16);
 }
 
+std::pair<Vector, Matrix> PCA::debugeameEsta(){
+  return make_pair(_autovalores, _autovectores);
+}
+MatrixXd PCA::transform(Matrix X) { //X pertenece a R^(cantIm x cantCoord)
 
-MatrixXd PCA::transform(Matrix X) {
-  
-  Eigen::Map<Vector> chorizo(X.data(), X.size(), 1);
-
-  Matrix eigenvectors = _first_alpha_pairs.second; // pertenece a R^(alfa x 784)
-  
-  return eigenvectors * chorizo;
+  return X * _autovectores; //deberia ser de R^(cantIm x alpha)
 }
 

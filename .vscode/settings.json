@@ -67,6 +67,8 @@
         "valarray": "cpp",
         "variant": "cpp",
         "*.traits": "cpp",
-        "openglsupport": "cpp"
-    }
+        "openglsupport": "cpp",
+        "alignedvector3": "cpp"
+    },
+    "cmake.configureOnOpen": true
 }

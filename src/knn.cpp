@@ -11,7 +11,6 @@ void KNNClassifier::fit(Matrix X, Matrix y)//Fit the model using X as training d
     _y = y;
     
 }
-/*
 int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENTE EN MUCHOS ASPECTOS!!!!! (por ejemplo hacer k pasos del slection sort, por ejemplo)
 { 
     std::vector<double> distancias(_X.rows());
@@ -44,13 +43,12 @@ int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENT
     } 
     return moda;
 }
-*/
-int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENTE EN MUCHOS ASPECTOS!!!!! (por ejemplo hacer k pasos del slection sort, por ejemplo)
+/* int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENTE EN MUCHOS ASPECTOS!!!!! (por ejemplo hacer k pasos del slection sort, por ejemplo)
 { 
     Eigen::VectorXd distancias(_X.rows());
     Vector clases(_X.rows());
     clases << _y.col(0);
-    MatrixXd diferencias = (_X).colwise() - x;
+    MatrixXd diferencias = (_X).rowwise() - x.transpose();
     distancias = diferencias.rowwise().norm();
 
     distancias.conservativeResize(distancias.rows(), distancias.cols() + 1);
@@ -79,7 +77,7 @@ int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENT
         }
     } 
     return moda;
-}
+} */
 
 
 void print_vector(int v[])

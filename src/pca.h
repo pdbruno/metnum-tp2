@@ -7,10 +7,12 @@ public:
     void fit(Matrix X);
 
     Eigen::MatrixXd transform(Matrix X);
+    std::pair<Vector, Matrix> debugeameEsta();
 private:
     unsigned int _alpha;
 
     Matrix covarianza;
 
-    std::pair<Vector, Matrix> _first_alpha_pairs;
+    Vector _autovalores;
+    Matrix _autovectores;
 };
