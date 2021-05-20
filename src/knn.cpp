@@ -11,6 +11,7 @@ void KNNClassifier::fit(Matrix X, Matrix y)//Fit the model using X as training d
     _y = y;
     
 }
+/*
 int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENTE EN MUCHOS ASPECTOS!!!!! (por ejemplo hacer k pasos del slection sort, por ejemplo)
 { 
     std::vector<double> distancias(_X.rows());
@@ -43,6 +44,42 @@ int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENT
     } 
     return moda;
 }
+*/
+int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENTE EN MUCHOS ASPECTOS!!!!! (por ejemplo hacer k pasos del slection sort, por ejemplo)
+{ 
+    Eigen::VectorXd distancias(_X.rows());
+    Vector clases(_X.rows());
+    clases << _y.col(0);
+    MatrixXd diferencias = (_X).colwise() - x;
+    distancias = diferencias.rowwise().norm();
+
+    distancias.conservativeResize(distancias.rows(), distancias.cols() + 1);
+    distancias.col(1) = clases;
+
+    vector<int> stdClases(clases.data(), clases.data() + clases.rows() * clases.cols()); 
+    vector<double> stdDistancias(distancias.data(), distancias.data() + distancias.rows() * distancias.cols());
+    
+    sorteadito(stdDistancias, stdClases);// ENCONTRAR UNA MANEAR DE VECTORIZAR ESTA FUNCION, es complicado
+    
+    std::array<int, 10> digitos = {};
+    for (size_t i = 0; i < _k; i++)
+    {
+        digitos[stdClases[i]]++;
+    }
+
+
+    int moda = 0; //todo esto se puede obviar y sacar la moda directamente en el for anterior
+    int modaApariciones = digitos[0];
+
+    for (size_t i = 0; i < 10; i++)
+    {
+        if(digitos[i]>modaApariciones){
+            modaApariciones = digitos[i];
+            moda = i;
+        }
+    } 
+    return moda;
+}
 
 
 void print_vector(int v[])
@@ -52,6 +89,8 @@ void print_vector(int v[])
         //pybind11::print(v[i], '\n');
     }
 }
+
+
 Vector KNNClassifier::predict(Matrix X)
 {
     // Creamos vector columna a devolver

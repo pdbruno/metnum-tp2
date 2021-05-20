@@ -12,3 +12,13 @@ int main(int argc, char** argv){
 
   return 0;
 }
+
+/*
+void deCSVaMATRIX(const std::string & path){
+  std::ifstream csvfile;
+  csvfile.open(path);
+
+  Eigen::Matrix<double, >
+}
+*/
+
