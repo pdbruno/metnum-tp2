@@ -8,10 +8,14 @@ using namespace std;
 
 pair<double, Vector> power_iteration(const Matrix &X, unsigned num_iter, double eps) {
     Vector b = Vector::Random(X.cols());
+    bool very_close = false;
 
-    for (int i = 0; i < num_iter; i++) {
-        b = X * b;
-        b = b / b.norm();
+    for (int i = 0; i < num_iter && !very_close; i++) {
+        Vector new_b = X * b;
+        new_b = new_b / new_b.norm();
+        double cos_angle = new_b.transpose() * b;
+        very_close = (1-eps) < cos_angle && cos_angle <= 1;
+        b = new_b;
     }
     // Falta criterio de paradas, experimentar con eso
     double eigval = b.transpose() * X * b ; //hay una soberbia perdida de precision
@@ -24,7 +28,7 @@ pair<Vector, Matrix> get_first_eigenvalues(const Matrix &X, unsigned num, unsign
     Vector eigvalues(num);
     Matrix eigvectors(A.rows(), num);
 
-    int a = 0;
+    double a = 0;
     Vector v = Vector::Zero(A.rows());
     for (int i = 0; i < num; i++) {
         A = A - (a * v * v.transpose());
