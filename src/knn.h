@@ -16,5 +16,5 @@ private:
     Matrix _X;
     Matrix _y;
 };
-void sorteadito(std::vector<double>& distancias, std::vector<int>& clases);
+void sorteadito(double distancias[], int clases[], int n, int k);
 void print_vector(int v[]);
