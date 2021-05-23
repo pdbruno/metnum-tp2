@@ -1,3 +1,4 @@
+from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import metnum
@@ -42,6 +43,13 @@ for alpha in range(31):
         acc_heatmap[alpha, k] = acc
         duration_heatmap[alpha, k] = time_performance
 
+myfile = Path('k_and_alpha_heatmap/acc_heatmap_matrix.npy')
+myfile.touch(exist_ok=True)
+with open('k_and_alpha_heatmap/acc_heatmap_matrix.npy', 'wb') as f:
+    np.save(f, acc_heatmap)
 
-plt.imshow(acc_heatmap, cmap='hot', interpolation='nearest')
-plt.show()
+
+myfile = Path('k_and_alpha_heatmap/duration_heatmap_matrix.npy')
+myfile.touch(exist_ok=True)
+with open('k_and_alpha_heatmap/duration_heatmap_matrix.npy', 'wb') as f:
+    np.save(f, duration_heatmap)
