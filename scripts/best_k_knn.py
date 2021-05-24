@@ -4,14 +4,12 @@ import numpy as np
 import metnum
 import pandas as pd
 from sklearn.metrics import accuracy_score
+from sklearn.datasets import fetch_openml
 import time
 
-df_train = pd.read_csv("../data/train.csv")
-
-df_train = df_train[:10000]
-X = df_train[df_train.columns[1:]].values
-y = df_train["label"].values.reshape(-1, 1)
-
+X, y = fetch_openml('mnist_784', version=1, return_X_y=True)
+y = y.astype(int)[:10000]
+X = X.astype(int)[:10000]
 
 limit = int(0.8 * X.shape[0]) 
 
@@ -25,7 +23,7 @@ print(f"Ahora tengo {len(X_train)} instancias de entrenamiento y {len(X_val)} de
 
 accuracies = []
 durations = []
-for k in range(130):
+for k in range(30):
     start =  time.process_time()
     clf_metnum = metnum.KNNClassifier(k)
     clf_metnum.fit(X_train, y_train)
@@ -35,13 +33,13 @@ for k in range(130):
     durations.append(end - start)
 
 
-myfile = Path('best_k_knn/acc_by_k.npy')
+myfile = Path('best_k_knn/acc_by_k_mnist.npy')
 myfile.touch(exist_ok=True)
 with open('best_k_knn/acc_by_k.npy', 'wb') as f:
     np.save(f, accuracies)
 
 
-myfile = Path('best_k_knn/duration_by_k.npy')
+myfile = Path('best_k_knn/duration_by_k_mnist.npy')
 myfile.touch(exist_ok=True)
 with open('best_k_knn/duration_by_k.npy', 'wb') as f:
     np.save(f, durations)

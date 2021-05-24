@@ -7,7 +7,7 @@ import time
 
 df_train = pd.read_csv("../data/train.csv")
 
-df_train = df_train[:5000]
+df_train = df_train
 X = df_train[df_train.columns[1:]].values
 y = df_train["label"].values.reshape(-1, 1)
 
