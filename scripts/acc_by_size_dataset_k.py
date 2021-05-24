@@ -8,8 +8,8 @@ from sklearn.datasets import fetch_openml
 
 X_all, y_all = fetch_openml('mnist_784', version=1, return_X_y=True)
 
-cant_imagenes = [1300, 5000, 10000, 20000, 40000, 70000]
-best_ks = [1000]
+cant_imagenes = [100, 500, 1000, 5000, 10000, 20000, 40000, 70000]
+best_ks = [3]
 
 accuracies = []
 durations = []
@@ -18,9 +18,13 @@ for k in best_ks:
         y = y_all.astype(int)[:cant]
         X = X_all.astype(int)[:cant]
         limit = int(0.8 * X.shape[0]) 
-
-        X_train, y_train = X[:limit], y[:limit]
-        X_val, y_val = X[limit:], y[limit:]
+        if cant == 100:
+            limit = int(0.2 * X.shape[0]) 
+            X_val, y_val = X[:limit], y[:limit]
+            X_train, y_train = X[limit:], y[limit:]
+        else:
+            X_train, y_train = X[:limit], y[:limit]
+            X_val, y_val = X[limit:], y[limit:]
 
         assert len(X_train) == len(y_train)
         assert len(X_val) == len(y_val)

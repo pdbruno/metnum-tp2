@@ -17,4 +17,3 @@ private:
     Matrix _y;
 };
 void sorteadito(double distancias[], int clases[], int n, int k);
-void print_vector(int v[]);

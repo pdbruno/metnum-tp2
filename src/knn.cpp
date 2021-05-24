@@ -76,13 +76,6 @@ int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENT
 } */
 
 
-void print_vector(int v[]) {
-    for (uint i = 0; i < 10; i++)     {
-        //pybind11::print(v[i], '\n');
-    }
-}
-
-
 Vector KNNClassifier::predict(Matrix X) {
     // Creamos vector columna a devolver
     auto ret = Vector(X.rows());
