@@ -20,16 +20,16 @@ import pandas as pd
     ax1.set_ylabel('Accuracy')
     plt.show() """
 
-cant_imagenes = ['100', '500', '1000', '5000', '10000', '20000', '40000', '70000']
+cant_imagenes = ['100', '500','1000', '5000', '10000', '20000', '40000', '70000']
 acc_3 = np.load('../acc_by_size_dataset_k/acc_3.npy')
 duration_3 = np.load('../acc_by_size_dataset_k/duration_3.npy')
-acc_20 = np.load('../acc_by_size_dataset_k/acc_20.npy')
+acc_5 = np.load('../acc_by_size_dataset_k/acc_5.npy')
 duration_5 = np.load('../acc_by_size_dataset_k/duration_5.npy')
-acc_30 = np.load('../acc_by_size_dataset_k/acc_30.npy')
+acc_4 = np.load('../acc_by_size_dataset_k/acc_4.npy')
 duration_4 = np.load('../acc_by_size_dataset_k/duration_4.npy')
-acc_50 = np.load('../acc_by_size_dataset_k/acc_50.npy')
+acc_6 = np.load('../acc_by_size_dataset_k/acc_6.npy')
 duration_6 = np.load('../acc_by_size_dataset_k/duration_6.npy')
-acc_100 = np.load('../acc_by_size_dataset_k/acc_100.npy')
+acc_2 = np.load('../acc_by_size_dataset_k/acc_2.npy')
 duration_2 = np.load('../acc_by_size_dataset_k/duration_2.npy')
 
 plt.rc('font', size=20)          # controls default text sizes
@@ -52,7 +52,7 @@ ax.set_ylabel('Duration')
 ax.set_xlabel('Tamaño de dataset')
 ax.set_title('Duration para k = 2, 3, 4, 5, 6 para distinto tamaño de dataset')
 ax.set_xticks(x)
-# ax.set_ylim(0.6)
+# ax.set_ylim(0.8)
 ax.set_yscale('log')
 ax.set_xticklabels(cant_imagenes)
 ax.legend()
