@@ -6,12 +6,17 @@ import metnum
 from pathlib import Path
 import random
 
-best_ks = [2]
-kfold = [2]
+best_ks = [2,3,4,5,6]
+kfold = [5,10,15,20]
 
 X, y = fetch_openml('mnist_784', version=1, return_X_y=True)
 y = y.astype(int)
 X = X.astype(int)
+
+indxs = np.random.choice(len(y), 10000, replace=False)
+new_y = [ y[idx] for idx in indxs ]
+new_X = [ X[idx] for idx in indxs ]
+X, y = np.array(new_X), np.array(new_y)
 
 resultados = np.zeros((len(best_ks), len(kfold)))
 
