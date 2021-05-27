@@ -28,7 +28,7 @@ plt.plot(range(12,49), acc[12:] / performance[12:], '-o')
 plt.xlabel('Alpha', fontsize=40)
 plt.ylabel('Accuracy / Performance(segundos) ', fontsize=40)
 plt.xticks([12,15,20,25,30,35,40,45])
-plt.title('Accuracy / Performance de kNN + PCA para k = 3 y alpha de 1 a 50', fontsize=40)
+plt.title('Accuracy / Performance de kNN + PCA para k = 3 y alpha de 12 a 50', fontsize=40)
 plt.show()
 
 
