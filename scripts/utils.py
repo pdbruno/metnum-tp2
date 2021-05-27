@@ -1,7 +1,7 @@
 import numpy as np 
 from sklearn.datasets import fetch_openml
 
-def get_MNIST(train_limit, items=70000, shuffle=True):
+def get_MNIST_XY(train_limit, items=70000, shuffle=True):
     X, y = fetch_openml('mnist_784', version=1, return_X_y=True)
     y = y.astype(int)
     X = X.astype(int)
@@ -21,7 +21,6 @@ def get_MNIST(train_limit, items=70000, shuffle=True):
     assert len(X_val) == len(y_val)
 
     return X_train, y_train, X_val, y_val
-
 
 def get_MNIST_XY(train_limit, items=70000, shuffle=True):
     X, y = fetch_openml('mnist_784', version=1, return_X_y=True)
