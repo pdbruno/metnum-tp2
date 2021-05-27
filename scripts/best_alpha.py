@@ -27,7 +27,7 @@ print(f"Ahora tengo {len(X_train)} instancias de entrenamiento y {len(X_val)} de
 
 accuracy_con_pca = []
 performance = []
-for i in [784]:
+for i in range(50):
     start =  time.process_time()
     pca = metnum.PCA(i)
     pca.fit(X_train)
