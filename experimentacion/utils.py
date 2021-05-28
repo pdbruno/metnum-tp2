@@ -22,3 +22,18 @@ def get_MNIST(train_limit, shuffle=True):
 
     return X_train, y_train, X_val, y_val
 
+
+def get_MNIST_XY(train_limit, items=70000, shuffle=True):
+    X, y = fetch_openml('mnist_784', version=1, return_X_y=True)
+    y = y.astype(int)
+    X = X.astype(int)
+
+    if shuffle:
+        indxs = np.random.choice(len(y), items, replace=False)
+        new_y = [ y[idx] for idx in indxs ]
+        new_X = [ X[idx] for idx in indxs ]
+        X, y = np.array(new_X), np.array(new_y)
+
+    return X, y
+
+
