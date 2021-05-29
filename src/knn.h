@@ -10,11 +10,10 @@ public:
 
     Vector predict(Matrix X);
 
-private:
+protected:
     unsigned int _k;
+    virtual int _knn(Vector x);
     Matrix _X;
     Matrix _y;
-protected:
-    int _knn(Vector x);
 };
 void sorteadito(double distancias[], int clases[], int n, int k);
