@@ -39,41 +39,6 @@ int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENT
 
     return moda;
 }
-/* int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENTE EN MUCHOS ASPECTOS!!!!! (por ejemplo hacer k pasos del slection sort, por ejemplo)
-{
-    Eigen::VectorXd distancias(_X.rows());
-    Vector clases(_X.rows());
-    clases << _y.col(0);
-    MatrixXd diferencias = (_X).rowwise() - x.transpose();
-    distancias = diferencias.rowwise().norm();
-
-    distancias.conservativeResize(distancias.rows(), distancias.cols() + 1);
-    distancias.col(1) = clases;
-
-    vector<int> stdClases(clases.data(), clases.data() + clases.rows() * clases.cols());
-    vector<double> stdDistancias(distancias.data(), distancias.data() + distancias.rows() * distancias.cols());
-
-    sorteadito(stdDistancias, stdClases);// ENCONTRAR UNA MANEAR DE VECTORIZAR ESTA FUNCION, es complicado
-
-    std::array<int, 10> digitos = {};
-    for (size_t i = 0; i < _k; i++)
-    {
-        digitos[stdClases[i]]++;
-    }
-
-
-    int moda = 0; //todo esto se puede obviar y sacar la moda directamente en el for anterior
-    int modaApariciones = digitos[0];
-
-    for (size_t i = 0; i < 10; i++)
-    {
-        if(digitos[i]>modaApariciones){
-            modaApariciones = digitos[i];
-            moda = i;
-        }
-    }
-    return moda;
-} */
 
 
 Vector KNNClassifier::predict(Matrix X) {

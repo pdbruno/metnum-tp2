@@ -2,10 +2,11 @@
 #include <pybind11/stl.h>
 #include <pybind11/eigen.h>
 #include "knn.h"
+#include "better_knn.h"
 #include "pca.h"
 #include "eigen.h"
 
-namespace py=pybind11;
+namespace py = pybind11;
 
 // el primer argumento es el nombre...
 PYBIND11_MODULE(metnum, m) {
@@ -13,6 +14,11 @@ PYBIND11_MODULE(metnum, m) {
         .def(py::init<unsigned int>())
         .def("fit", &KNNClassifier::fit)
         .def("predict", &KNNClassifier::predict);
+
+    py::class_<BetterKNNClassifier>(m, "BetterKNNClassifier")
+        .def(py::init<unsigned int>())
+        .def("fit", &BetterKNNClassifier::fit)
+        .def("predict", &BetterKNNClassifier::predict);
 
     py::class_<PCA>(m, "PCA")
         .def(py::init<unsigned int>())
@@ -22,16 +28,16 @@ PYBIND11_MODULE(metnum, m) {
         "power_iteration", &power_iteration,
         "Function that calculates eigenvector",
         py::arg("X"),
-        py::arg("num_iter")=5000,
-        py::arg("epsilon")=1e-16
+        py::arg("num_iter") = 5000,
+        py::arg("epsilon") = 1e-16
     );
     m.def(
         "get_first_eigenvalues", &get_first_eigenvalues,
         "Function that calculates eigenvector",
         py::arg("X"),
         py::arg("num"),
-        py::arg("num_iter")=5000,
-        py::arg("epsilon")=1e-16
+        py::arg("num_iter") = 5000,
+        py::arg("epsilon") = 1e-16
     );
 
 }
