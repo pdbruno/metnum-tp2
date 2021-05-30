@@ -1,0 +1,2 @@
+Archivos varios utilizados para generar metricas y graficos en el desarrollo de los experimentos. La mayoria de el codigo importante esta en las notebooks dentro de la carpeta experimentos. Nada de este zip es necesario para reproducirlos. 
+Lo incluimos zipeado por si se quieren revisar.
