@@ -10,7 +10,7 @@ void KNNClassifier::fit(Matrix X, Matrix y)//Fit the model using X as training d
     _y = y;
 
 }
-int KNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENTE EN MUCHOS ASPECTOS!!!!! (por ejemplo hacer k pasos del slection sort, por ejemplo)
+int KNNClassifier::_knn(Vector x) 
 {
     int n = _X.rows();
     double distancias[n] = {};

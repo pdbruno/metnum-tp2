@@ -16,6 +16,6 @@ void PCA::fit(Matrix X) {
 }
 
 MatrixXd PCA::transform(Matrix X) { //X pertenece a R^(cantIm x cantCoord)
-  return X * _autovectores; //deberia ser de R^(cantIm x alpha)
+  return X * _autovectores;
 }
 
