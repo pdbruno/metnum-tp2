@@ -17,8 +17,8 @@ pair<double, Vector> power_iteration(const Matrix &X, unsigned num_iter, double 
         very_close = (1-eps) < cos_angle && cos_angle <= 1;
         b = new_b;
     }
-    // Falta criterio de paradas, experimentar con eso
-    double eigval = b.transpose() * X * b ; //hay una soberbia perdida de precision
+
+    double eigval = b.transpose() * X * b ;
     return make_pair(eigval , b);
 }
 

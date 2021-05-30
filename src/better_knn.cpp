@@ -5,7 +5,7 @@ using namespace std;
 BetterKNNClassifier::BetterKNNClassifier(unsigned int n_neighbors) : KNNClassifier(n_neighbors) {
 }
 
-int BetterKNNClassifier::_knn(Vector x) //ESTO SEGURAMENTE SE PUEDE HACER MAS EFICIENTE EN MUCHOS ASPECTOS!!!!! (por ejemplo hacer k pasos del slection sort, por ejemplo)
+int BetterKNNClassifier::_knn(Vector x)
 {
     int n = _X.rows();
     double distancias[n] = {};
